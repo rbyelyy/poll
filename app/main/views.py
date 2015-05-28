@@ -1,8 +1,5 @@
-__author__ = 'rbs'
-
 from flask import render_template
 from . import main
-
 
 
 @main.route('/')
