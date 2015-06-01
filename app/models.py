@@ -24,9 +24,7 @@ class History(db.Model):
     user_id = db.Column(db.String(64), db.ForeignKey('users.id'), nullable=True)
     correct_answer_id = db.Column(db.String(64), db.ForeignKey('answers.answer_id'), nullable=True)
     user_answer_id = db.Column(db.String(64), db.ForeignKey('answers.answer_id'), nullable=True)
-    # users = db.relationship('User', backref='history')
-    # question = db.relationship('Question', backref='questions', lazy='dynamic')
-    # answer = db.relationship('Answer', backref='answers', lazy='dynamic')
+    users = db.relationship('User')
 
 
 class Question(db.Model):
@@ -36,12 +34,13 @@ class Question(db.Model):
     question = db.Column(db.Text(), nullable=True)
     image_path = db.Column(db.String(128))
     confirmed = db.Column(db.Boolean, nullable=False)
+    answer = db.relationship("Answer", backref="questions")
 
 
 class Answer(db.Model):
     __tablename__ = 'answers'
 
-    question_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey('questions.question_id'), nullable=False)
     answer_id = db.Column(db.Integer, primary_key=True, unique=False, nullable=False)
     answer_text = db.Column(db.Text(), nullable=True)
     correct = db.Column(db.Boolean, nullable=True)

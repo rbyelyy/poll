@@ -1,4 +1,6 @@
-.qwe {
-    color: blue;
+.alert-gray {
+    color: white;
+    background-color: gray;
+    border-color: gray;
 }
 
