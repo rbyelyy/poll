@@ -40,8 +40,9 @@ class Question(db.Model):
 class Answer(db.Model):
     __tablename__ = 'answers'
 
+    id = db.Column(db.Integer, primary_key=True)
     question_id = db.Column(db.Integer, db.ForeignKey('questions.question_id'), nullable=False)
-    answer_id = db.Column(db.Integer, primary_key=True, unique=False, nullable=False)
+    answer_id = db.Column(db.Integer, nullable=False, )
     answer_text = db.Column(db.Text(), nullable=True)
     correct = db.Column(db.Boolean, nullable=True)
 
