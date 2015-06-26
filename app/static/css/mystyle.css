@@ -3,4 +3,21 @@
     background-color: gray;
     border-color: gray;
 }
+.btn-gray {
+    background-color: white;
+    border-color: black;
+    color: black;
+}
 
+
+.btn-gray.focus {
+        background-color: gray;
+        border-color: gray;
+        color: #fff;
+}
+
+.btn-gray.active {
+        background-color: gray;
+        border-color: gray;
+        color: #fff;
+}
