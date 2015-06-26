@@ -9,7 +9,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/js.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/modal_quize.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/increment_cookies.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/sample_quize.js') }}"></script>
 {% endblock %}
 
 {% block navbar %}
@@ -26,7 +26,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('question.sample') }}">Start Quiz</a></li>
+                <li><a href="{{ url_for('question.show_question') }}">Start Quiz</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated() %}

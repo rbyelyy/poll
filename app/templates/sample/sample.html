@@ -10,14 +10,13 @@
     <h1 class="text-center">    Lets start    </h1>
 </div>
 
-<div class="container-fluid bg-info">
+<div class="container-fluid">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>
-                    <p>{{ question.question_id }}</p>
-                    <p> {{ question.question }}</p>
-                </h3>
+
+                <span style="display:inline" >{{ question.question_id }}</span>
+                <strong>{{ question.question }}</strong>
             </div>
             <div class="modal-body">
                 <div class="col-xs-3 col-xs-offset-5">
@@ -39,7 +38,8 @@
                         <span class="btn-label">
                             <i class="glyphicon glyphicon-chevron-right"></i>
                         </span>
-                        <input type="radio" name="q_answer_{{ answer.answer_id }}" value={{ answer.answer_id }}>{{ answer.answer_id }} {{ answer.answer_text }}
+                        <input type="radio" name="q_answer_{{ answer.answer_id }}"
+                               value={{ answer.answer_id }}>{{ answer.answer_id }} {{ answer.answer_text }}
                     </label>
                     {% endfor %}
 
@@ -52,7 +52,13 @@
                 {% if question_id|int() >= 2 %}
                     <button type="button" class="btn-lg btn-primary pull-left" id="back" >Back</button>
                 {% endif %}
-                <button type="button" class="btn-lg btn-primary pull-right" id="next" >Next</button>
+                {% if question_id|int() < 3 %}
+                    <button type="button" class="btn-lg btn-primary pull-right" id="next" >Next</button>
+                {% endif %}
+                {% if question_id|int() == 3 %}
+                    <button type="button" class="btn-lg btn-primary center-block" id="finish" >Finish</button>
+                {% endif %}
+
             </div>
 
         </div>

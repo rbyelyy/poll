@@ -4,7 +4,6 @@ from .. import db
 from flask import g
 from . import question
 
-
 def question_selection(question_id=None):
     # TODO: Add validation for argument formats
     if question_id:
@@ -14,9 +13,13 @@ def question_selection(question_id=None):
 
 
 @question.route('/sampletour')
-def sample():
+def show_question():
     # TODO: Add expiration to cookies
+    # TODO: Get limit of questions
     question_id = question_selection(request.cookies.get('question_id'))
+    print type(question_id)
+    if not 1 < int(question_id) < 4:
+        question_id = '1'
     question = Question.query.filter_by(question_id=question_id).first()
     answers = [i for i in Answer.query.filter_by(question_id=question_id).all()]
     resp = make_response(render_template('sample/sample.html',
@@ -29,7 +32,7 @@ def sample():
 
 @question.route('/sampletour/_answer')
 def _check_answer():
-    question_id = 1
+    question_id = question_selection(request.cookies.get('question_id'))
     answer = request.args.get('answer', 0, type=int)
     correct_answer = Answer.query.filter_by(question_id=question_id).filter_by(correct=1).first()
     if correct_answer.answer_id == answer:
@@ -38,3 +41,7 @@ def _check_answer():
     else:
         answer_responce = jsonify(result=0)
         return answer_responce
+
+@question.route('/sampletour/_quize')
+def _check_quize():
+    return render_template('sample/result.html')

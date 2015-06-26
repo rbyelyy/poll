@@ -28,3 +28,10 @@ $(function () {
     });
   });
 });
+
+
+$(function () {
+  $('#finish').on('click', function () {
+    $( "div.modal-dialog" ).load( "/sampletour/_quize" );
+  });
+});
