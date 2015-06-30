@@ -9,7 +9,7 @@
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/jquery.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/js.cookie.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='javascript/modal_quize.js') }}"></script>
-<script type="text/javascript" src="{{ url_for('static', filename='javascript/sample_quize.js') }}"></script>
+
 {% endblock %}
 
 {% block navbar %}
@@ -55,5 +55,6 @@
 
 {% block scripts %}
 {{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='javascript/sample_quize.js') }}"></script>
 {{ moment.include_moment() }}
 {% endblock %}
